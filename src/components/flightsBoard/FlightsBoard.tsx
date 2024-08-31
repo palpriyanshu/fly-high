@@ -1,4 +1,4 @@
-import React, {FC, useState} from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import { useNavigate } from "react-router-dom";
 
 import Table from "@mui/material/Table";
@@ -11,6 +11,7 @@ import TableContainer from "@mui/material/TableContainer";
 import {FlightDetail} from "../../types/flight-details";
 import {Box, TablePagination} from "@mui/material";
 import "./FlightsBoard.css"
+import fetchApis from "../../resources/fetch-api";
 
 const FlightsBoardHeaders = () => {
     return <TableHead className='flight-board-header'>
@@ -32,7 +33,7 @@ type FlightRowProps = {
 const FlightRow: FC<FlightRowProps> = ({ flightDetail }) => {
     const navigate = useNavigate();
 
-    return <TableRow onClick={() => navigate(`/flight/${flightDetail.flightNumber}`)}>
+    return <TableRow onClick={() => navigate(`/flight/${flightDetail.flightNumber}`)} data-testid={`flight-row-${flightDetail.flightNumber}`}>
         <TableCell>{flightDetail.flightNumber}</TableCell>
         <TableCell>{flightDetail.airline}</TableCell>
         <TableCell>{flightDetail.origin}</TableCell>
@@ -42,31 +43,42 @@ const FlightRow: FC<FlightRowProps> = ({ flightDetail }) => {
     </TableRow>
 };
 
-type Props = {
-    flightList: FlightDetail[]
-};
-const FlightsBoard: FC<Props> = ({flightList}) => {
+const FlightsBoard: FC = () => {
     const [currentPage, setPage] = useState(0);
+    const [flightData, setFlightData] = useState<FlightDetail[]>([])
+
+    useEffect(() => {
+        fetchApis.fetchFlightList().then(
+            (response: FlightDetail[]) => {
+                setFlightData(response);
+            }
+        );
+    }, []);
+
+
     const rowsPerPage = 10;
 
     return <Box className='flight-board'>
         <TableContainer className='flight-board-container' sx={{width: '80%'}}>
     <Table>
         <FlightsBoardHeaders/>
-        <TableBody className='flight-board-body'>
-            {
-                flightList
-                    .slice(currentPage * rowsPerPage, currentPage * rowsPerPage + rowsPerPage)
-                    .map((flightDetail) => (
-                    <FlightRow key={flightDetail.flightNumber} flightDetail={flightDetail} />
-                ))
-            }
-        </TableBody>
+        {
+            flightData.length > 0 ? <TableBody className='flight-board-body'>
+                {
+                    flightData
+                        .slice(currentPage * rowsPerPage, currentPage * rowsPerPage + rowsPerPage)
+                        .map((flightDetail) => (
+                            <FlightRow key={flightDetail.flightNumber} flightDetail={flightDetail} />
+                        ))
+                }
+            </TableBody> : <p>No Flight Detail is available</p>
+        }
+
     </Table>
     <TablePagination
         className='flight-board-pagination'
         component="div"
-        count={flightList.length}
+        count={flightData.length}
         rowsPerPage={rowsPerPage}
         page={currentPage}
         onPageChange={(_: any, newPageIndex: number) => setPage(newPageIndex)}

@@ -1,50 +1,95 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import {render, screen, waitFor} from "@testing-library/react";
 import FlightDetailPage from "./FlightDetailPage";
-import { useParams } from "react-router-dom";
 
-jest.mock("react-router-dom");
+jest.mock("react-router-dom", () => ({
+    ...jest.requireActual("react-router-dom"),
+    useParams: () => ({
+        id: "2",
+    }),
+}));
 
-(useParams as jest.Mock).mockReturnValue({id: "SW110"});
-
-test.skip("should render flight detail", () => {
-    const flightList = [
-        {
-            "flightNumber": "SW110",
-            "airline": "Southwest",
-            "origin": "Las Vegas",
-            "destination": "Houston",
-            "departureTime": "08:00 AM",
-            "status": "On Time"
-        }
-    ];
-    render(<FlightDetailPage flightList={flightList} />);
-    const flightNumber = screen.getByText('SW110');
-    const airline = screen.getByText('Southwest');
-    const origin = screen.getByText('Las Vegas');
-    const destination = screen.getByText('Houston');
-    const departureTime = screen.getByText('08:00 AM');
-    const status = screen.getByText('On Time');
-    expect(flightNumber).toBeVisible();
-    expect(airline).toBeVisible();
-    expect(origin).toBeVisible();
-    expect(destination).toBeVisible();
-    expect(departureTime).toBeVisible();
-    expect(status).toBeVisible();
+const flightDetail = {
+    "flightNumber": "SW110",
+    "airline": "Southwest",
+    "origin": "Las Vegas",
+    "destination": "Houston",
+    "departureTime": "08:00 AM",
+    "status": "On Time"
+};
+jest.mock("../../resources/fetch-api", () => {
+    return {
+        fetchFlightList: jest.fn(),
+        fetchFlightDetail: () => Promise.resolve(flightDetail)
+    }
 });
 
-test.skip("should render error message when flight details are not available", () => {
-    const flightList = [
-        {
-            "flightNumber": "SW111",
-            "airline": "Southwest",
-            "origin": "Las Vegas",
-            "destination": "Houston",
-            "departureTime": "08:00 AM",
-            "status": "On Time"
+test("should render flight number", async () => {
+    render(<FlightDetailPage  />);
+
+    await waitFor(() => {
+        const flightNumber = screen.getByText('SW110');
+        expect(flightNumber).toBeVisible();
+    });
+});
+
+test("should render airline", async () => {
+    render(<FlightDetailPage  />);
+
+    await waitFor(() => {
+        const airline = screen.getByText('Southwest');
+        expect(airline).toBeVisible();
+    });
+});
+
+test("should render origin", async () => {
+    render(<FlightDetailPage  />);
+
+    await waitFor(() => {
+        const origin = screen.getByText('Las Vegas');
+        expect(origin).toBeVisible();
+    });
+});
+
+test("should render destination", async () => {
+    render(<FlightDetailPage  />);
+
+    await waitFor(() => {
+        const destination = screen.getByText('Houston');
+        expect(destination).toBeVisible();
+    });
+});
+
+test("should render departure time", async () => {
+    render(<FlightDetailPage  />);
+
+    await waitFor(() => {
+        const departureTime = screen.getByText('08:00 AM');
+        expect(departureTime).toBeVisible();
+    });
+});
+
+test("should render flight status", async () => {
+    render(<FlightDetailPage  />);
+
+    await waitFor(() => {
+        const status = screen.getByText('On Time');
+        expect(status).toBeVisible();
+    });
+});
+
+test("should render error message when flight details are not available", async () => {
+    jest.mock("../../resources/fetch-api", () => {
+        return {
+            fetchFlightList: jest.fn(),
+            fetchFlightDetail: () => Promise.resolve(null)
         }
-    ];
-    render(<FlightDetailPage flightList={flightList} />);
-    const detailsNotFoundMessage = screen.getByText('Flight not found');
-    expect(detailsNotFoundMessage).toBeVisible();
+    });
+
+    render(<FlightDetailPage />);
+
+    await waitFor(() => {
+        const detailsNotFoundMessage = screen.getByText('Flight not found');
+        expect(detailsNotFoundMessage).toBeVisible();
+    });
 });

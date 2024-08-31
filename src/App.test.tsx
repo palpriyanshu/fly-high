@@ -10,6 +10,6 @@ test('renders app header', () => {
 
 test('renders flights board', () => {
   render(<App />);
-  const flightBaord = screen.getByRole('table');
-  expect(flightBaord).toBeVisible();
+  const flightBoard = screen.getByRole('table');
+  expect(flightBoard).toBeVisible();
 });

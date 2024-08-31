@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
@@ -9,45 +9,45 @@ import { Container } from "@mui/material";
 import { useParams } from "react-router-dom";
 import FlightStatus from "../flight-status/FlightStatus";
 import {FlightDetail} from "../../types/flight-details";
+import fetchApis from "../../resources/fetch-api";
 
-type Props = {
-    flightList: FlightDetail[]
-};
-const FlightDetailPage: React.FC<Props> = ({flightList}) => {
-    const { id } = useParams();
+const FlightDetailPage: React.FC = () => {
+    const {id} = useParams<{id: string}>();
 
-    const flight: FlightDetail | undefined = flightList.find(
-        (f) => f.flightNumber === id
-    );
+    const [flightDetail, setFlightDetail] = useState<FlightDetail>(null);
 
-    if (!flight) {
+    useEffect(() => {
+        id && fetchApis.fetchFlightDetail(id).then(
+            (response) => {
+                setFlightDetail(response);
+            }
+        );
+    }, [id]);
+
+    if (!flightDetail) {
         return <div>Flight not found</div>;
     }
 
     return (
         <Container className="flight-status-details">
-
             <Card className="flight-detail-card">
-                <FlightStatus status={flight.status} />
+                <FlightStatus status={flightDetail.status} />
                 <CardContent>
                     <div className="flight-detail-header">
-                        <Typography color="textSecondary">{flight.airline}</Typography>
+                        <Typography color="textSecondary">{flightDetail.airline}</Typography>
                         <Typography sx={{ fontSize: "32px", fontWeight: "500" }}>
-                            {flight.flightNumber}
+                            {flightDetail.flightNumber}
                         </Typography>
                     </div>
                     <Container className="flight-detail-status">
-                        <Typography>{flight.origin}</Typography>
+                        <Typography>{flightDetail.origin}</Typography>
                         <Divider className="flight-icon">
                             <FlightTakeoffIcon fontSize={"large"} />
                         </Divider>
-                        <Typography>{flight.destination}</Typography>
+                        <Typography>{flightDetail.destination}</Typography>
                     </Container>
-                    <Typography component="div">
-                        {flight.departureTime}
-                    </Typography>
                     <Typography variant="h4" component="div">
-                        {flight.departureTime}
+                        {flightDetail.departureTime}
                     </Typography>
                 </CardContent>
             </Card>
