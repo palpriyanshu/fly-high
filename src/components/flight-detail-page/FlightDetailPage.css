@@ -1,0 +1,45 @@
+.flight-status-details {
+    width: 60%;
+}
+
+.flight-detail-card {
+    margin: 5px auto;
+    padding: 20px;
+}
+
+.flight-status-title {
+    padding-left: 0 !important;
+}
+
+.flight-status-title .flight-status {
+    height: 40px;
+    width: 33%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flight-detail-header {
+    margin: 10px 0 40px;
+}
+
+.flight-detail-status {
+    display: flex !important;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 50px !important;
+}
+
+.flight-detail-status p {
+    font-size: 28px;
+    font-weight: 400;
+}
+
+.flight-icon {
+    flex-grow: 1;
+    margin: 0 20px !important;
+    display: inline-block;
+    text-align: center;
+}
+

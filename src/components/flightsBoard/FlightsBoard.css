@@ -1,0 +1,22 @@
+
+.flight-board-container {
+    margin: auto;
+}
+
+.flight-board-header {
+    height: 75px;
+    background-color: #61dafb;
+}
+
+.flight-board-body tr {
+    background: #edf2f7;
+}
+
+.flight-board-body tr:hover {
+    background: rgba(154, 231, 252, 0.36);
+    cursor: pointer
+}
+
+.flight-board-pagination {
+    background-color: #61dafb;
+}

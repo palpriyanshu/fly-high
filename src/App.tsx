@@ -3,6 +3,8 @@ import './App.css';
 import Header from "./components/header/Header";
 import flightData from './resources/flight-data.json';
 import FlightsBoard from "./components/flightsBoard/FlightsBoard";
+import {Route, BrowserRouter as Router, Routes} from "react-router-dom";
+import FlightDetailPage from "./components/flight-detail-page/FlightDetailPage";
 
 function App() {
   return (
@@ -11,7 +13,15 @@ function App() {
         <p>
           Fly The Friendly Skies
         </p>
-        <FlightsBoard flightList={flightData}/>
+    <Router>
+      <Routes>
+        <Route
+            path="/"
+            element={<FlightsBoard flightList={flightData}/>}
+        />
+          <Route path="/flight/:id" element={<FlightDetailPage flightList={flightData}/>} />
+      </Routes>
+    </Router>
     </div>
   );
 }

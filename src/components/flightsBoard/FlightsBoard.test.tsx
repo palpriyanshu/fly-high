@@ -1,6 +1,16 @@
 import React from "react";
 import {fireEvent, render, screen} from "@testing-library/react";
 import FlightsBoard from "./FlightsBoard";
+import { useNavigate, BrowserRouter as Router } from "react-router-dom";
+
+jest.mock("react-router-dom", () => ({
+    ...jest.requireActual("react-router-dom"),
+    useNavigate: jest.fn()
+}));
+
+const navigate = jest.fn();
+
+(useNavigate as jest.Mock).mockReturnValue(navigate);
 
 test("should render all columns", () => {
     const flightList = [
@@ -14,7 +24,7 @@ test("should render all columns", () => {
         }
     ];
 
-    render(<FlightsBoard flightList={flightList}/>);
+    render(<Router><FlightsBoard flightList={flightList}/></Router>);
     const columnHeaders = screen.getAllByRole('columnheader');
     expect(columnHeaders.length).toBe(6);
 });
@@ -31,7 +41,7 @@ test("should render column names", () => {
         }
     ];
 
-    render(<FlightsBoard flightList={flightList}/>);
+    render(<Router><FlightsBoard flightList={flightList}/></Router>);
     const flightNumber = screen.getByRole('columnheader', {name: 'Flight Number'});
     const airline = screen.getByRole('columnheader', {name: 'Airline'});
     const origin = screen.getByRole('columnheader', {name: 'Origin'});
@@ -57,7 +67,7 @@ test("should render flight details", () => {
             "status": "On Time"
         }
     ];
-    render(<FlightsBoard flightList={flightList}/>);
+    render(<Router><FlightsBoard flightList={flightList}/></Router>);
 
     const flightNumber = screen.getByText('SW110');
     const airline = screen.getByText('Southwest');
@@ -164,7 +174,7 @@ test("should render maximum 10 flight details on one page", () => {
             "status": "Delayed"
         },
     ];
-    render(<FlightsBoard flightList={flightList}/>);
+    render(<Router><FlightsBoard flightList={flightList}/></Router>);
 
     const [, ...flightDetailRows] = screen.getAllByRole('row');
     expect(flightDetailRows.length).toBe(10);
@@ -302,7 +312,7 @@ test("should show next page on changing pagination", () => {
         },
     ];
 
-    render(<FlightsBoard flightList={flightList}/>);
+    render(<Router><FlightsBoard flightList={flightList}/></Router>);
 
     const [, ...flightDetailRows] = screen.getAllByRole('row');
     expect(flightDetailRows.length).toBe(10);
@@ -312,4 +322,23 @@ test("should show next page on changing pagination", () => {
 
     const [, ...updatedFlightDetailRows] = screen.getAllByRole('row');
     expect(updatedFlightDetailRows.length).toBe(6);
+});
+
+test.skip("should navigate to flight detail page on clicking flight detail", () => {
+    const flightList = [
+        {
+            "flightNumber": "SW110",
+            "airline": "Southwest",
+            "origin": "Las Vegas",
+            "destination": "Houston",
+            "departureTime": "08:00 AM",
+            "status": "On Time"
+        }
+    ];
+    render(<Router><FlightsBoard flightList={flightList}/></Router>);
+
+    const flightNumber = screen.getByText('SW110');
+    fireEvent.click(flightNumber);
+
+    expect(navigate).toHaveBeenCalledWith('/flight/SW110');
 });
