@@ -1,0 +1,394 @@
+[
+  {
+    "flightNumber": "AA102",
+    "airline": "American Airlines",
+    "origin": "New York (JFK)",
+    "destination": "Los Angeles",
+    "departureTime": "08:15 AM",
+    "status": "On Time"
+  },
+  {
+    "flightNumber": "UA453",
+    "airline": "United Airlines",
+    "origin": "Chicago (ORD)",
+    "destination": "San Francisco",
+    "departureTime": "09:30 AM",
+    "status": "Delayed"
+  },
+  {
+    "flightNumber": "DL789",
+    "airline": "Delta Airlines",
+    "origin": "Atlanta (ATL)",
+    "destination": "Miami",
+    "departureTime": "10:00 AM",
+    "status": "Boarding"
+  },
+  {
+    "flightNumber": "SW232",
+    "airline": "Southwest",
+    "origin": "Dallas (DAL)",
+    "destination": "Houston",
+    "departureTime": "11:05 AM",
+    "status": "On Time"
+  },
+  {
+    "flightNumber": "B6209",
+    "airline": "JetBlue",
+    "origin": "Boston (BOS)",
+    "destination": "Orlando",
+    "departureTime": "12:30 PM",
+    "status": "On Time"
+  },
+  {
+    "flightNumber": "AA304",
+    "airline": "American Airlines",
+    "origin": "Seattle (SEA)",
+    "destination": "Denver",
+    "departureTime": "01:45 PM",
+    "status": "Departed"
+  },
+  {
+    "flightNumber": "UA897",
+    "airline": "United Airlines",
+    "origin": "San Diego",
+    "destination": "Las Vegas",
+    "departureTime": "02:00 PM",
+    "status": "On Time"
+  },
+  {
+    "flightNumber": "DL321",
+    "airline": "Delta Airlines",
+    "origin": "Minneapolis",
+    "destination": "Detroit",
+    "departureTime": "02:30 PM",
+    "status": "Boarding"
+  },
+  {
+    "flightNumber": "SW178",
+    "airline": "Southwest",
+    "origin": "Phoenix",
+    "destination": "Kansas City",
+    "departureTime": "03:00 PM",
+    "status": "On Time"
+  },
+  {
+    "flightNumber": "B6214",
+    "airline": "JetBlue",
+    "origin": "Fort Lauderdale",
+    "destination": "New York (JFK)",
+    "departureTime": "03:45 PM",
+    "status": "Delayed"
+  },
+  {
+    "flightNumber": "AA503",
+    "airline": "American Airlines",
+    "origin": "Los Angeles",
+    "destination": "Chicago (ORD)",
+    "departureTime": "04:00 PM",
+    "status": "On Time"
+  },
+  {
+    "flightNumber": "UA234",
+    "airline": "United Airlines",
+    "origin": "Newark",
+    "destination": "Houston",
+    "departureTime": "05:10 PM",
+    "status": "Departed"
+  },
+  {
+    "flightNumber": "DL654",
+    "airline": "Delta Airlines",
+    "origin": "Salt Lake City",
+    "destination": "San Diego",
+    "departureTime": "05:30 PM",
+    "status": "On Time"
+  },
+  {
+    "flightNumber": "SW398",
+    "airline": "Southwest",
+    "origin": "Denver",
+    "destination": "Phoenix",
+    "departureTime": "06:00 PM",
+    "status": "On Time"
+  },
+  {
+    "flightNumber": "B6221",
+    "airline": "JetBlue",
+    "origin": "Orlando",
+    "destination": "Boston (BOS)",
+    "departureTime": "06:15 PM",
+    "status": "Boarding"
+  },
+  {
+    "flightNumber": "AA702",
+    "airline": "American Airlines",
+    "origin": "Dallas (DFW)",
+    "destination": "New York (LGA)",
+    "departureTime": "06:45 PM",
+    "status": "Delayed"
+  },
+  {
+    "flightNumber": "UA111",
+    "airline": "United Airlines",
+    "origin": "Washington (IAD)",
+    "destination": "Los Angeles",
+    "departureTime": "07:00 PM",
+    "status": "On Time"
+  },
+  {
+    "flightNumber": "DL923",
+    "airline": "Delta Airlines",
+    "origin": "New York (JFK)",
+    "destination": "Seattle",
+    "departureTime": "07:30 PM",
+    "status": "Departed"
+  },
+  {
+    "flightNumber": "SW312",
+    "airline": "Southwest",
+    "origin": "Las Vegas",
+    "destination": "Denver",
+    "departureTime": "08:00 PM",
+    "status": "On Time"
+  },
+  {
+    "flightNumber": "B6227",
+    "airline": "JetBlue",
+    "origin": "New York (JFK)",
+    "destination": "San Juan",
+    "departureTime": "08:15 PM",
+    "status": "Delayed"
+  },
+  {
+    "flightNumber": "AA806",
+    "airline": "American Airlines",
+    "origin": "Miami",
+    "destination": "Boston (BOS)",
+    "departureTime": "08:45 PM",
+    "status": "Boarding"
+  },
+  {
+    "flightNumber": "UA405",
+    "airline": "United Airlines",
+    "origin": "San Francisco",
+    "destination": "New York (EWR)",
+    "departureTime": "09:00 PM",
+    "status": "On Time"
+  },
+  {
+    "flightNumber": "DL276",
+    "airline": "Delta Airlines",
+    "origin": "Detroit",
+    "destination": "Atlanta",
+    "departureTime": "09:30 PM",
+    "status": "On Time"
+  },
+  {
+    "flightNumber": "SW567",
+    "airline": "Southwest",
+    "origin": "Houston",
+    "destination": "Dallas (DAL)",
+    "departureTime": "10:00 PM",
+    "status": "Departed"
+  },
+  {
+    "flightNumber": "B6233",
+    "airline": "JetBlue",
+    "origin": "Chicago (ORD)",
+    "destination": "Fort Lauderdale",
+    "departureTime": "10:15 PM",
+    "status": "On Time"
+  },
+  {
+    "flightNumber": "AA900",
+    "airline": "American Airlines",
+    "origin": "Los Angeles",
+    "destination": "New York (JFK)",
+    "departureTime": "10:45 PM",
+    "status": "Boarding"
+  },
+  {
+    "flightNumber": "UA556",
+    "airline": "United Airlines",
+    "origin": "Denver",
+    "destination": "Chicago (ORD)",
+    "departureTime": "11:00 PM",
+    "status": "Delayed"
+  },
+  {
+    "flightNumber": "DL377",
+    "airline": "Delta Airlines",
+    "origin": "Seattle",
+    "destination": "Salt Lake City",
+    "departureTime": "11:30 PM",
+    "status": "On Time"
+  },
+  {
+    "flightNumber": "SW621",
+    "airline": "Southwest",
+    "origin": "San Diego",
+    "destination": "Las Vegas",
+    "departureTime": "11:45 PM",
+    "status": "On Time"
+  },
+  {
+    "flightNumber": "B6240",
+    "airline": "JetBlue",
+    "origin": "New York (JFK)",
+    "destination": "Los Angeles",
+    "departureTime": "12:00 AM",
+    "status": "Departed"
+  },
+  {
+    "flightNumber": "AA1010",
+    "airline": "American Airlines",
+    "origin": "Atlanta",
+    "destination": "Miami",
+    "departureTime": "12:30 AM",
+    "status": "On Time"
+  },
+  {
+    "flightNumber": "UA789",
+    "airline": "United Airlines",
+    "origin": "Newark",
+    "destination": "San Francisco",
+    "departureTime": "01:00 AM",
+    "status": "Boarding"
+  },
+  {
+    "flightNumber": "DL403",
+    "airline": "Delta Airlines",
+    "origin": "Minneapolis",
+    "destination": "Denver",
+    "departureTime": "01:30 AM",
+    "status": "On Time"
+  },
+  {
+    "flightNumber": "SW754",
+    "airline": "Southwest",
+    "origin": "Dallas (DAL)",
+    "destination": "Houston",
+    "departureTime": "02:00 AM",
+    "status": "Delayed"
+  },
+  {
+    "flightNumber": "B6247",
+    "airline": "JetBlue",
+    "origin": "Orlando",
+    "destination": "New York (JFK)",
+    "departureTime": "02:15 AM",
+    "status": "On Time"
+  },
+  {
+    "flightNumber": "AA1113",
+    "airline": "American Airlines",
+    "origin": "Chicago (ORD)",
+    "destination": "Los Angeles",
+    "departureTime": "02:45 AM",
+    "status": "Departed"
+  },
+  {
+    "flightNumber": "UA666",
+    "airline": "United Airlines",
+    "origin": "San Francisco",
+    "destination": "Denver",
+    "departureTime": "03:00 AM",
+    "status": "On Time"
+  },
+  {
+    "flightNumber": "DL534",
+    "airline": "Delta Airlines",
+    "origin": "Miami",
+    "destination": "Atlanta",
+    "departureTime": "03:30 AM",
+    "status": "On Time"
+  },
+  {
+    "flightNumber": "SW883",
+    "airline": "Southwest",
+    "origin": "Phoenix",
+    "destination": "San Diego",
+    "departureTime": "04:00 AM",
+    "status": "Boarding"
+  },
+  {
+    "flightNumber": "B6253",
+    "airline": "JetBlue",
+    "origin": "Fort Lauderdale",
+    "destination": "Orlando",
+    "departureTime": "04:15 AM",
+    "status": "On Time"
+  },
+  {
+    "flightNumber": "AA1220",
+    "airline": "American Airlines",
+    "origin": "Los Angeles",
+    "destination": "Seattle",
+    "departureTime": "04:45 AM",
+    "status": "Delayed"
+  },
+  {
+    "flightNumber": "UA777",
+    "airline": "United Airlines",
+    "origin": "Washington (IAD)",
+    "destination": "Boston (BOS)",
+    "departureTime": "05:00 AM",
+    "status": "On Time"
+  },
+  {
+    "flightNumber": "DL612",
+    "airline": "Delta Airlines",
+    "origin": "Atlanta",
+    "destination": "Detroit",
+    "departureTime": "05:30 AM",
+    "status": "On Time"
+  },
+  {
+    "flightNumber": "SW998",
+    "airline": "Southwest",
+    "origin": "Denver",
+    "destination": "Dallas (DAL)",
+    "departureTime": "06:00 AM",
+    "status": "Departed"
+  },
+  {
+    "flightNumber": "B6260",
+    "airline": "JetBlue",
+    "origin": "Boston (BOS)",
+    "destination": "New York (JFK)",
+    "departureTime": "06:15 AM",
+    "status": "On Time"
+  },
+  {
+    "flightNumber": "AA1330",
+    "airline": "American Airlines",
+    "origin": "Miami",
+    "destination": "Chicago (ORD)",
+    "departureTime": "06:45 AM",
+    "status": "Boarding"
+  },
+  {
+    "flightNumber": "UA888",
+    "airline": "United Airlines",
+    "origin": "San Diego",
+    "destination": "Newark",
+    "departureTime": "07:00 AM",
+    "status": "Delayed"
+  },
+  {
+    "flightNumber": "DL701",
+    "airline": "Delta Airlines",
+    "origin": "New York (JFK)",
+    "destination": "Miami",
+    "departureTime": "07:30 AM",
+    "status": "On Time"
+  },
+  {
+    "flightNumber": "SW110",
+    "airline": "Southwest",
+    "origin": "Las Vegas",
+    "destination": "Houston",
+    "departureTime": "08:00 AM",
+    "status": "On Time"
+  }
+]

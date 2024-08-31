@@ -7,3 +7,9 @@ test('renders app header', () => {
   const header = screen.getByTestId('app-header');
   expect(header).toBeVisible();
 });
+
+test('renders flights board', () => {
+  render(<App />);
+  const flightBaord = screen.getByRole('table');
+  expect(flightBaord).toBeVisible();
+});
