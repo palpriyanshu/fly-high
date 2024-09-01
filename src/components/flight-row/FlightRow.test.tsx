@@ -15,7 +15,7 @@ describe('FlightRow', () => {
         airline: "Southwest",
         origin: "Las Vegas",
         destination: "Houston",
-        departureTime: new Date("2024-08-31T19:13:01.685Z").toUTCString(),
+        departureTime: "2024-08-31T19:13:01.685Z",
         status: "On Time"
     };
 
