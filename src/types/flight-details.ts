@@ -8,4 +8,4 @@ type FlightDetail = {
     status: string;
 };
 
-export type { FlightDetail };
+export type {FlightDetail};

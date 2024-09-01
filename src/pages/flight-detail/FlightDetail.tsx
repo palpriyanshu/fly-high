@@ -13,7 +13,7 @@ const FlightDetail: React.FC = () => {
     const description = "Unable to retrieve flight information at the moment. Please retry after some time or return to homepage.";
 
     const BackButton = () => {
-        return <Button variant={"contained"} sx={{ background: "#319795" }} onClick={() => navigate("/")}>Back to Home</Button>
+        return <Button variant={"contained"} sx={{background: "#319795"}} onClick={() => navigate("/")}>Back to Home</Button>;
     };
 
     if (!id) {
@@ -27,8 +27,8 @@ const FlightDetail: React.FC = () => {
     }
 
     return <ErrorBoundary fallback={<ErrorComponent title={title} description={description} ActionComponent={() => <BackButton/>}/>} >
-       <FlightDetailCard flightId={id}/>
-    </ErrorBoundary>
+        <FlightDetailCard flightId={id}/>
+    </ErrorBoundary>;
 };
 
 export default FlightDetail;

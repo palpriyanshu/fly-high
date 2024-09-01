@@ -4,23 +4,23 @@ import Dashboard from "./Dashboard";
 import useFetchFlightList from "../../hooks/useFetchFlightList";
 import {BrowserRouter as Router} from "react-router-dom";
 
-jest.mock("../../hooks/useFetchFlightList")
+jest.mock("../../hooks/useFetchFlightList");
 
-describe('Dashboard', () => {
-    test("should render loader while fetching flight list",  () => {
-        (useFetchFlightList as jest.Mock).mockReturnValue({loading: true, data: null, error: null})
+describe("Dashboard", () => {
+    test("should render loader while fetching flight list", () => {
+        (useFetchFlightList as jest.Mock).mockReturnValue({loading: true, data: null, error: null});
         render(<Router><Dashboard /></Router>);
 
-        expect(screen.getByTestId("linear-loader")).toBeVisible()
+        expect(screen.getByTestId("linear-loader")).toBeVisible();
     });
 
     test("should render error component when flight list is not available", () => {
-        (useFetchFlightList as jest.Mock).mockReturnValue({loading: false, data: null, error: {errorMessage: "some error"}})
+        (useFetchFlightList as jest.Mock).mockReturnValue({loading: false, data: null, error: {errorMessage: "some error"}});
         render(<Router><Dashboard /></Router>);
 
-        expect(screen.getByText("Oops... Something went wrong!")).toBeVisible()
-        expect(screen.getByText("Unable to retrieve flights information at the moment. Please retry after some time.")).toBeVisible()
-    })
+        expect(screen.getByText("Oops... Something went wrong!")).toBeVisible();
+        expect(screen.getByText("Unable to retrieve flights information at the moment. Please retry after some time.")).toBeVisible();
+    });
 
     test("should render flight table when flight list is available", () => {
         const flightList = [
@@ -34,9 +34,9 @@ describe('Dashboard', () => {
                 "status": "On Time"
             },
         ];
-        (useFetchFlightList as jest.Mock).mockReturnValue({loading: false, data: flightList, error: null})
+        (useFetchFlightList as jest.Mock).mockReturnValue({loading: false, data: flightList, error: null});
         render(<Router><Dashboard /></Router>);
 
-        expect(screen.getByRole("table")).toBeVisible()
-    })
+        expect(screen.getByRole("table")).toBeVisible();
+    });
 });

@@ -2,7 +2,7 @@ import React from "react";
 import {render, screen} from "@testing-library/react";
 import useFetchFlightDetail from "../../hooks/useFetchFlightDetail";
 import FlightDetail from "./FlightDetail";
-import {BrowserRouter as Router, useParams} from "react-router-dom";
+import {BrowserRouter as Router} from "react-router-dom";
 
 jest.mock("../../hooks/useFetchFlightDetail");
 
@@ -14,16 +14,16 @@ jest.mock("react-router-dom", () => ({
     }),
 }));
 
-describe('FlightDetail', () => {
-    test("should render loader",  () => {
-        (useFetchFlightDetail as jest.Mock).mockReturnValue({loading: true, data: null, error: null})
+describe("FlightDetail", () => {
+    test("should render loader", () => {
+        (useFetchFlightDetail as jest.Mock).mockReturnValue({loading: true, data: null, error: null});
         render(<Router><FlightDetail /></Router>);
 
-        expect(screen.getByTestId("linear-loader")).toBeVisible()
+        expect(screen.getByTestId("linear-loader")).toBeVisible();
     });
 
-    test("should render flight detail card",  () => {
-        const flightDetail =  {
+    test("should render flight detail card", () => {
+        const flightDetail = {
             id : 1,
             flightNumber: "SW110",
             airline: "Southwest",
@@ -33,17 +33,17 @@ describe('FlightDetail', () => {
             status: "On Time"
         };
 
-        (useFetchFlightDetail as jest.Mock).mockReturnValue({loading: false, data: flightDetail, error: null})
+        (useFetchFlightDetail as jest.Mock).mockReturnValue({loading: false, data: flightDetail, error: null});
         render(<Router><FlightDetail /></Router>);
 
-        expect(screen.getByTestId("flight-detail-page-1")).toBeVisible()
+        expect(screen.getByTestId("flight-detail-page-1")).toBeVisible();
     });
 
     test("should render error component when error is present", () => {
-        (useFetchFlightDetail as jest.Mock).mockReturnValue({loading: false, data: null, error: {errorMessage: "some error"}})
+        (useFetchFlightDetail as jest.Mock).mockReturnValue({loading: false, data: null, error: {errorMessage: "some error"}});
         render(<Router><FlightDetail /></Router>);
 
-        expect(screen.getByText("Oops... Something went wrong!")).toBeVisible()
-        expect(screen.getByText("Unable to retrieve flight information at the moment. Please retry after some time or return to homepage.")).toBeVisible()
-    })
+        expect(screen.getByText("Oops... Something went wrong!")).toBeVisible();
+        expect(screen.getByText("Unable to retrieve flight information at the moment. Please retry after some time or return to homepage.")).toBeVisible();
+    });
 });

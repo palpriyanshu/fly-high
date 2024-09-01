@@ -12,11 +12,11 @@ export default class ErrorBoundary extends React.Component<Props, State> {
     state: State;
     constructor(props: Props) {
         super(props);
-        this.state = { hasError: false };
+        this.state = {hasError: false};
     }
 
     public static getDerivedStateFromError(): State {
-        return { hasError: true };
+        return {hasError: true};
     }
 
     public componentDidCatch(error: Error, errorInfo: ErrorInfo) {

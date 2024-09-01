@@ -46,7 +46,7 @@ const FlightTableHead = () => {
                 ))
             }
         </TableRow>
-    </TableHead>
+    </TableHead>;
 };
 
-export default FlightTableHead
+export default FlightTableHead;

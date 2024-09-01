@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import {render, screen} from "@testing-library/react";
 import ErrorComponent from "./ErrorComponent";
 
 describe("ErrorComponent", () => {
@@ -27,7 +27,7 @@ describe("ErrorComponent", () => {
             />
         );
 
-        const actionComponent = screen.getByRole("button", { name: "Retry" });
+        const actionComponent = screen.getByRole("button", {name: "Retry"});
 
         expect(actionComponent).toBeVisible();
     });

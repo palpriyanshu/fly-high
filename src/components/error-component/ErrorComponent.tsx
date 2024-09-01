@@ -1,5 +1,5 @@
-import { Container, Paper, Typography } from "@mui/material";
-import React, { ComponentType } from "react";
+import {Container, Paper, Typography} from "@mui/material";
+import React, {ComponentType} from "react";
 import "./ErrorComponent.css";
 
 interface Props {
@@ -22,6 +22,6 @@ const ErrorComponent : React.FC<Props> = ({title, description, ActionComponent})
             </Container>
         </Paper>
     );
-}
+};
 
 export default ErrorComponent;

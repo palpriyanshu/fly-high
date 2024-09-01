@@ -8,7 +8,6 @@ jest.mock("react-router-dom", () => ({
     useNavigate: jest.fn().mockImplementation(() => jest.fn())
 }));
 
-
 const flightList = [
     {
         "id": 1,
@@ -149,61 +148,61 @@ const flightList = [
 
 jest.mock("../../hooks/useFetchFlightList");
 
-describe('FlightsTable', () => {
-    test("should render loader during flight information loading state",  () => {
-        (useFetchFlightList as jest.Mock).mockReturnValue({loading: true, data: null, error: null})
+describe("FlightsTable", () => {
+    test("should render loader during flight information loading state", () => {
+        (useFetchFlightList as jest.Mock).mockReturnValue({loading: true, data: null, error: null});
         render(<FlightsTable />);
 
-        expect(screen.getByTestId("linear-loader")).toBeVisible()
+        expect(screen.getByTestId("linear-loader")).toBeVisible();
     });
 
-    test("should throw error when error is present",  () => {
-        (useFetchFlightList as jest.Mock).mockReturnValue({loading: false, data: null, error: {errorMessage: "some error"}})
+    test("should throw error when error is present", () => {
+        (useFetchFlightList as jest.Mock).mockReturnValue({loading: false, data: null, error: {errorMessage: "some error"}});
 
         expect(() => render(<FlightsTable />)).toThrow("some error");
     });
 
-   test("should render flight table", () => {
-       (useFetchFlightList as jest.Mock).mockReturnValue({loading: false, data: flightList, error: null})
-       render(<FlightsTable />);
-       const flightTable = screen.getByRole('table');
-       expect(flightTable).toBeVisible();
+    test("should render flight table", () => {
+        (useFetchFlightList as jest.Mock).mockReturnValue({loading: false, data: flightList, error: null});
+        render(<FlightsTable />);
+        const flightTable = screen.getByRole("table");
+        expect(flightTable).toBeVisible();
     });
 
     test("should render table head", () => {
-        (useFetchFlightList as jest.Mock).mockReturnValue({loading: false, data: flightList, error: null})
+        (useFetchFlightList as jest.Mock).mockReturnValue({loading: false, data: flightList, error: null});
         render(<FlightsTable />);
-        const tableHead = screen.getByTestId('flight-board-header');
+        const tableHead = screen.getByTestId("flight-board-header");
         expect(tableHead).toBeVisible();
     });
 
     test("should render flight details", () => {
-        (useFetchFlightList as jest.Mock).mockReturnValue({loading: false, data: flightList, error: null})
+        (useFetchFlightList as jest.Mock).mockReturnValue({loading: false, data: flightList, error: null});
         render(<FlightsTable />);
 
-        const flightRow = screen.getByTestId('flight-row-1');
+        const flightRow = screen.getByTestId("flight-row-1");
         expect(flightRow).toBeVisible();
     });
 
-    test("should render maximum 10 flight details on one page",  () => {
-        (useFetchFlightList as jest.Mock).mockReturnValue({loading: false, data: flightList, error: null})
+    test("should render maximum 10 flight details on one page", () => {
+        (useFetchFlightList as jest.Mock).mockReturnValue({loading: false, data: flightList, error: null});
         render(<FlightsTable />);
 
-        const [, ...flightDetailRows] = screen.getAllByRole('row');
+        const [, ...flightDetailRows] = screen.getAllByRole("row");
         expect(flightDetailRows.length).toBe(10);
     });
 
-    test("should show next page on changing pagination",  async () => {
-        (useFetchFlightList as jest.Mock).mockReturnValue({loading: false, data: flightList, error: null})
+    test("should show next page on changing pagination", async () => {
+        (useFetchFlightList as jest.Mock).mockReturnValue({loading: false, data: flightList, error: null});
         render(<FlightsTable />);
 
-        const [, ...flightDetailRows] = screen.getAllByRole('row');
+        const [, ...flightDetailRows] = screen.getAllByRole("row");
         expect(flightDetailRows.length).toBe(10);
 
-        const nextPageButton = screen.getByRole('button', {name: 'Go to next page'});
-        fireEvent.click(nextPageButton)
+        const nextPageButton = screen.getByRole("button", {name: "Go to next page"});
+        fireEvent.click(nextPageButton);
 
-        const [, ...updatedFlightDetailRows] = screen.getAllByRole('row');
+        const [, ...updatedFlightDetailRows] = screen.getAllByRole("row");
         expect(updatedFlightDetailRows.length).toBe(5);
     });
 });

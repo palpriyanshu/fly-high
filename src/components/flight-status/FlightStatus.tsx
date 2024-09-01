@@ -13,9 +13,9 @@ type Props = {
     status: string
 };
 
-const FlightStatus: React.FC<Props> = ({ status }) => {
+const FlightStatus: React.FC<Props> = ({status}) => {
     return (
-        <Typography component="div" className={`flight-status ${statusColors[status]}`} sx={{fontSize: 'larger'}}>
+        <Typography component="div" className={`flight-status ${statusColors[status]}`} sx={{fontSize: "larger"}}>
             {status}
         </Typography>
     );

@@ -1,14 +1,14 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import {render, screen} from "@testing-library/react";
 import ErrorBoundary from "./ErrorBoundary";
 
 const ErrorChildComponent = (): React.JSX.Element => {
     throw new Error("Oops! Something went wrong.");
-}
+};
 
 const FallbackComponent = (): React.JSX.Element => {
     return <div>Something went wrong!</div>;
-}
+};
 
 describe("ErrorBoundary", () => {
     test("should render the fallback UI when an error occurs", () => {

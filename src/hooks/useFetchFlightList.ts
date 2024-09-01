@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
 import fetchApis, {ErrorResponse} from "../resources/fetch-api";
 import {FlightDetail} from "../types/flight-details";
 
@@ -9,18 +9,17 @@ export default function useFetchFlightList(refreshIntervalInSec: number): {
 } {
     const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<ErrorResponse | null>(null);
-    const [flightList, setFlightList] = useState<FlightDetail[]>([])
-
+    const [flightList, setFlightList] = useState<FlightDetail[]>([]);
 
     useEffect(() => {
         setLoading(true);
         fetchApis.fetchFlightList().then(
             (response: FlightDetail[]) => {
                 setFlightList(response);
-                setLoading(false)
-            }).catch((error: ErrorResponse) => {
                 setLoading(false);
-                setError(error);
+            }).catch((error: ErrorResponse) => {
+            setLoading(false);
+            setError(error);
         });
 
         const intervalId = setInterval(async () => {
@@ -37,6 +36,5 @@ export default function useFetchFlightList(refreshIntervalInSec: number): {
         };
     }, [refreshIntervalInSec]);
 
-
-    return { data: flightList, loading ,error };
+    return {data: flightList, loading, error};
 }
