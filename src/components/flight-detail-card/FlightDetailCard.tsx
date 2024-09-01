@@ -10,6 +10,7 @@ import FlightStatus from "../flight-status/FlightStatus";
 import {formatDateTime} from "../../utils/date";
 import useFetchFlightDetail from "../../hooks/useFetchFlightDetail";
 import Loader from "../loader/Loader";
+import NavigationButton from "../button/NavigationButton";
 
 type Props = {
     flightId: string;
@@ -50,11 +51,12 @@ const FlightDetailCard: React.FC<Props> = ({flightId}) => {
                     </div>
                 </Container>
                 <Typography variant="h6">Departure</Typography>
-                <Typography variant="h4" component="div">
+                <Typography variant="h5" component="div">
                     {formatDateTime(flightDetail.departureTime)}
                 </Typography>
             </CardContent>
         </Card>
+        <NavigationButton path="/" label="Back to Home"/>
     </Container>;
 };
 

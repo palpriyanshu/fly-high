@@ -26,7 +26,7 @@ const FlightsTable: FC = () => {
 
     const rowsPerPage = 10;
 
-    return <Card className='flight-board' sx={{width: "80%", margin: "auto"}}>
+    return <Card className='flight-board' sx={{width: "80%", margin: "2rem auto"}}>
         <TableContainer>
             <Table>
                 <FlightTableHead />

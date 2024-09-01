@@ -6,6 +6,11 @@
     flex-grow: 1;
     text-align: left;
     color: black;
+
+    @media (max-width : 600px) {
+        font-size: 2rem !important;
+        font-weight: bold;
+    }
 }
 
 .flight-logo {

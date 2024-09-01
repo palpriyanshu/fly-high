@@ -3,8 +3,12 @@
 }
 
 .flight-detail-card {
-    margin: 5px auto;
+    margin: 5rem auto;
     padding: 20px;
+
+    @media (max-width : 600px) {
+        margin: 2rem auto;
+    }
 }
 
 .flight-status-title {
@@ -29,6 +33,10 @@
     flex-direction: row;
     justify-content: space-between;
     margin-bottom: 50px !important;
+
+    @media (max-width : 600px) {
+        flex-direction: column;
+    }
 }
 
 .flight-detail-status p {
