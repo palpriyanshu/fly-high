@@ -1,6 +1,6 @@
 import React from "react";
 import {useNavigate} from "react-router-dom";
-import {render, screen} from "@testing-library/react";
+import {render, screen, waitFor} from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import NavigationButton from "./NavigationButton";
 
@@ -8,7 +8,7 @@ jest.mock("react-router-dom");
 
 (useNavigate as jest.Mock).mockReturnValue(jest.fn());
 describe("NavigationButton", () => {
-    test("should navigate given path", () => {
+    test("should navigate given path", async () => {
         const navigate = jest.fn();
 
         (useNavigate as jest.Mock).mockReturnValue(navigate);
@@ -18,7 +18,9 @@ describe("NavigationButton", () => {
 
         userEvent.click(button);
 
-        expect(navigate).toHaveBeenCalledWith("/test-path");
+        await waitFor(() => {
+            expect(navigate).toHaveBeenCalledWith("/test-path");
+        });
     });
 
     test("should render given label", () => {

@@ -41,9 +41,12 @@ describe("FlightDetail", () => {
 
     test("should render error component when error is present", () => {
         (useFetchFlightDetail as jest.Mock).mockReturnValue({loading: false, data: null, error: {errorMessage: "some error"}});
+        const spy = jest.spyOn(console, "error").mockImplementation(() => jest.fn() );
+
         render(<Router><FlightDetail /></Router>);
 
         expect(screen.getByText("Oops... Something went wrong!")).toBeVisible();
         expect(screen.getByText("Unable to retrieve flight information at the moment. Please retry after some time or return to homepage.")).toBeVisible();
+        spy.mockRestore();
     });
 });

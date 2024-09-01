@@ -1,5 +1,5 @@
 import React from "react";
-import {render, screen} from "@testing-library/react";
+import {render, screen, waitFor} from "@testing-library/react";
 import FlightRow from "./FlightRow";
 import {useNavigate} from "react-router-dom";
 import userEvent from "@testing-library/user-event";
@@ -19,58 +19,64 @@ describe("FlightRow", () => {
         status: "On Time"
     };
 
+    const renderFlightRow = () => {
+        return render(<table><tbody><FlightRow flightDetail={flightDetail}/></tbody></table>);
+    };
+
     test("should render flight number", () => {
-        render(<FlightRow flightDetail={flightDetail}/>);
+        renderFlightRow();
 
         const flightNumber = screen.getByText("SW110");
         expect(flightNumber).toBeVisible();
     });
 
     test("should render airline", () => {
-        render(<FlightRow flightDetail={flightDetail}/>);
+        renderFlightRow();
 
         const airline = screen.getByText("Southwest");
         expect(airline).toBeVisible();
     });
 
     test("should render origin", () => {
-        render(<FlightRow flightDetail={flightDetail}/>);
+        renderFlightRow();
 
         const origin = screen.getByText("Las Vegas");
         expect(origin).toBeVisible();
     });
 
     test("should render destination", () => {
-        render(<FlightRow flightDetail={flightDetail}/>);
+        renderFlightRow();
 
         const destination = screen.getByText("Houston");
         expect(destination).toBeVisible();
     });
 
     test("should render formatted departure time", () => {
-        render(<FlightRow flightDetail={flightDetail}/>);
+        renderFlightRow();
 
         const departureTime = screen.getByText("01 Sep 2024, 17:15");
         expect(departureTime).toBeVisible();
     });
 
     test("should render flight status", () => {
-        render(<FlightRow flightDetail={flightDetail}/>);
+        renderFlightRow();
 
         const status = screen.getByText("On Time");
         expect(status).toBeVisible();
     });
 
-    test("should navigate to flight page when click on flight row", () => {
+    test("should navigate to flight page when click on flight row", async () => {
         const navigate = jest.fn();
 
         (useNavigate as jest.Mock).mockReturnValue(navigate);
-        render(<FlightRow flightDetail={flightDetail}/>);
+        renderFlightRow();
 
         const flightNumber = screen.getByText("SW110");
 
         userEvent.click(flightNumber);
 
-        expect(navigate).toHaveBeenCalledWith("/flights/1");
+        await waitFor(() => {
+            expect(navigate).toHaveBeenCalledWith("/flights/1");
+        });
     });
 });

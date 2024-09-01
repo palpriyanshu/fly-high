@@ -6,6 +6,6 @@ describe("FlightStatus", () => {
     test("should render status of flight", () => {
         render(<FlightStatus status="Departed" />);
         const status = screen.getByText("Departed");
-        expect(status).toBeInTheDocument();
+        expect(status).toBeVisible();
     });
 });

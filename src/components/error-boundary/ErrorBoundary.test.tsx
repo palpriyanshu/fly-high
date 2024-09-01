@@ -12,6 +12,8 @@ const FallbackComponent = (): React.JSX.Element => {
 
 describe("ErrorBoundary", () => {
     test("should render the fallback UI when an error occurs", () => {
+        const spy = jest.spyOn(console, "error").mockImplementation(() => jest.fn() );
+
         render(
             <ErrorBoundary fallback={<FallbackComponent/>}>
                 <ErrorChildComponent />
@@ -20,9 +22,13 @@ describe("ErrorBoundary", () => {
 
         const fallbackText = screen.getByText("Something went wrong!");
         expect(fallbackText).toBeVisible();
+
+        spy.mockRestore();
     });
 
     test("should render the children when no error occurs", () => {
+        const spy = jest.spyOn(console, "error").mockImplementation(() => jest.fn() );
+
         render(
             <ErrorBoundary fallback={<FallbackComponent />}>
                 <div>Normal Child Component</div>
@@ -30,5 +36,7 @@ describe("ErrorBoundary", () => {
         );
         const normalChildComponent = screen.getByText("Normal Child Component");
         expect(normalChildComponent).toBeVisible();
+
+        spy.mockRestore();
     });
 });

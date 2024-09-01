@@ -158,8 +158,10 @@ describe("FlightsTable", () => {
 
     test("should throw error when error is present", () => {
         (useFetchFlightList as jest.Mock).mockReturnValue({loading: false, data: null, error: {errorMessage: "some error"}});
+        const spy = jest.spyOn(console, "error").mockImplementation(() => jest.fn() );
 
         expect(() => render(<FlightsTable />)).toThrow("some error");
+        spy.mockRestore();
     });
 
     test("should render flight table", () => {
