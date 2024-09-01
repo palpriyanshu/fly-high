@@ -1,0 +1,9 @@
+.flight-board-header {
+    height: 75px;
+    background-color: #61dafb;
+}
+
+.flight-board-header th {
+    font-weight: bold;
+    font-size: medium;
+}

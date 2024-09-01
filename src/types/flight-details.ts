@@ -1,4 +1,5 @@
 type FlightDetail = {
+    id: number;
     flightNumber: string;
     airline: string;
     origin: string;

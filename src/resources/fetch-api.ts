@@ -1,7 +1,23 @@
+const baseUrl = 'https://flight-status-mock.core.travelopia.cloud';
+
+export type ErrorResponse = {
+    errorMessage: string;
+};
+const fetchData = (url: string) => {
+    return fetch(url).then((response) => {
+        if (response.ok) {
+            return Promise.resolve(response.json());
+        } else {
+            return Promise.reject({errorMessage: 'API fetch fails'});
+        }
+    }).catch(() => {
+        return Promise.reject({errorMessage: 'API fetch fails'});
+    });
+}
 
 const fetchApis = {
-    fetchFlightList: () => fetch('/flights').then((flightList) => flightList.json()),
-    fetchFlightDetail: (id: string) => fetch(`/flight/${id}`).then((details) => details.json()),
+    fetchFlightList: () => fetchData(`${baseUrl}/flights`),
+    fetchFlightDetail: (id: string) => fetchData(`${baseUrl}/flights/${id}`),
 };
 
 export default fetchApis;

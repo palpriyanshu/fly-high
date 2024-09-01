@@ -1,0 +1,13 @@
+.error-card-paper {
+    margin: 20vh auto;
+    max-width: 40vw;
+    min-height: 40vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.error-card-typography {
+    margin-bottom: 16px !important;
+}

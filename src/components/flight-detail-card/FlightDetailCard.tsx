@@ -1,35 +1,32 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import FlightTakeoffIcon from "@mui/icons-material/FlightTakeoff";
-import "./FlightDetailPage.css";
+import "./FlightDetailCard.css";
 import { Container } from "@mui/material";
-import { useParams } from "react-router-dom";
 import FlightStatus from "../flight-status/FlightStatus";
-import {FlightDetail} from "../../types/flight-details";
-import fetchApis from "../../resources/fetch-api";
+import {formatDateTime} from "../../utils/date";
+import useFetchFlightDetail from "../../hooks/useFetchFlightDetail";
+import Loader from "../loader/Loader";
 
-const FlightDetailPage: React.FC = () => {
-    const {id} = useParams<{id: string}>();
+type Props = {
+    flightId: string;
+}
 
-    const [flightDetail, setFlightDetail] = useState<FlightDetail>(null);
+const FlightDetailCard: React.FC<Props> = ({flightId}) => {
+    const {data: flightDetail, loading, error} = useFetchFlightDetail(flightId);
 
-    useEffect(() => {
-        id && fetchApis.fetchFlightDetail(id).then(
-            (response) => {
-                setFlightDetail(response);
-            }
-        );
-    }, [id]);
-
-    if (!flightDetail) {
-        return <div>Flight not found</div>;
+    if (loading && !flightDetail) {
+        return <Loader />;
     }
 
-    return (
-        <Container className="flight-status-details">
+    if(error) {
+        throw new Error(error.errorMessage)
+    }
+
+    return flightDetail && <Container className="flight-status-details" data-testid={`flight-detail-page-${flightDetail.id}`}>
             <Card className="flight-detail-card">
                 <FlightStatus status={flightDetail.status} />
                 <CardContent>
@@ -40,19 +37,25 @@ const FlightDetailPage: React.FC = () => {
                         </Typography>
                     </div>
                     <Container className="flight-detail-status">
-                        <Typography>{flightDetail.origin}</Typography>
+                        <div>
+                            <Typography component="div" >From</Typography>
+                            <Typography>{flightDetail.origin}</Typography>
+                        </div>
                         <Divider className="flight-icon">
                             <FlightTakeoffIcon fontSize={"large"} />
                         </Divider>
-                        <Typography>{flightDetail.destination}</Typography>
+                        <div>
+                            <Typography component="div" >To</Typography>
+                            <Typography>{flightDetail.destination}</Typography>
+                        </div>
                     </Container>
+                    <Typography variant="h6">Departure</Typography>
                     <Typography variant="h4" component="div">
-                        {flightDetail.departureTime}
+                        {formatDateTime(flightDetail.departureTime)}
                     </Typography>
                 </CardContent>
             </Card>
         </Container>
-    );
 };
 
-export default FlightDetailPage;
+export default FlightDetailCard;

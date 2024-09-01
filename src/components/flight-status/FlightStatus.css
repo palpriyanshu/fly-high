@@ -1,6 +1,4 @@
 .flight-status {
-    font-size: larger !important;
-    font-weight: 500 !important;
     border: 1px solid;
     border-radius: 5px;
     text-align: center;
@@ -9,23 +7,23 @@
 .on-time-status {
     border-color: green;
     color: green;
-    background-color: rgb(208, 249, 208);
+    background-color: rgb(220, 250, 220);
 }
 
 .boarding-status {
-    border-color: orangered;
-    color: orangered;
-    background-color: rgb(251, 230, 190);
+    color: #0080ff;
+    background-color: #cceefa;
+    border-color: #0080ff;
 }
 
 .delayed-status {
-    border-color: orangered;
-    color: orangered;
-    background-color: rgb(249, 199, 181);
+    border-color: red;
+    color: red;
+    background-color: rgb(243, 212, 199);
 }
 
 .departed-status {
-    border-color: red;
-    color: red;
-    background-color: rgb(250, 219, 219);
+    color: darkorange;
+    background-color: #f5eada;
+    border-color: darkorange;
 }

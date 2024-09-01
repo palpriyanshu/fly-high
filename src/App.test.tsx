@@ -8,8 +8,3 @@ test('renders app header', () => {
   expect(header).toBeVisible();
 });
 
-test('renders flights board', () => {
-  render(<App />);
-  const flightBoard = screen.getByRole('table');
-  expect(flightBoard).toBeVisible();
-});

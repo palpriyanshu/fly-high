@@ -1,5 +1,5 @@
-import Typography from "@mui/material/Typography";
 import React from "react";
+import Typography from "@mui/material/Typography";
 import "./FlightStatus.css";
 
 const statusColors: { [status: string]: string } = {
@@ -15,10 +15,7 @@ type Props = {
 
 const FlightStatus: React.FC<Props> = ({ status }) => {
     return (
-        <Typography
-            component="div"
-            className={`flight-status ${statusColors[status]}`}
-        >
+        <Typography component="div" className={`flight-status ${statusColors[status]}`} sx={{fontSize: 'larger'}}>
             {status}
         </Typography>
     );
