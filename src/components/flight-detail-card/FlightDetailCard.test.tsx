@@ -11,7 +11,7 @@ const flightDetail =  {
     airline: "Southwest",
     origin: "Las Vegas",
     destination: "Houston",
-    departureTime: "2024-08-31T19:13:01.685Z",
+    departureTime: "2024-09-01T11:45:58.043Z",
     status: "On Time"
 };
 
@@ -79,7 +79,7 @@ describe('FlightDetailCard', () => {
 
         render(<FlightDetailCard  flightId="1"/>);
 
-        const departureTime = screen.getByText('01 Sep 2024, 00:43');
+        const departureTime = screen.getByText('01 Sep 2024, 17:15');
         expect(departureTime).toBeVisible();
     });
 
