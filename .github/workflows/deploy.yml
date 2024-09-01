@@ -21,10 +21,10 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Setup Node 18
+      - name: Setup Node 21
         uses: actions/setup-node@v2
         with:
-          node-version: '18'
+          node-version: '21'
 
       - name: Run Tests Locally
         run: npm run test
