@@ -1,7 +1,8 @@
 import React from "react";
-import {fireEvent, render, screen} from "@testing-library/react";
+import {render, screen} from "@testing-library/react";
 import FlightRow from "./FlightRow";
 import {useNavigate} from "react-router-dom";
+import userEvent from "@testing-library/user-event";
 
 jest.mock("react-router-dom");
 
@@ -14,12 +15,12 @@ describe('FlightRow', () => {
         airline: "Southwest",
         origin: "Las Vegas",
         destination: "Houston",
-        departureTime: "2024-08-31T19:13:01.685Z",
+        departureTime: new Date("2024-08-31T19:13:01.685Z").toISOString(),
         status: "On Time"
     };
 
     test("should render flight number",  () => {
-        render(<FlightRow  flightDetail={flightDetail}/>);
+        render(<FlightRow flightDetail={flightDetail}/>);
 
         const flightNumber = screen.getByText('SW110');
         expect(flightNumber).toBeVisible();
@@ -68,7 +69,7 @@ describe('FlightRow', () => {
 
         const flightNumber = screen.getByText('SW110');
 
-        fireEvent.click(flightNumber);
+        userEvent.click(flightNumber);
 
         expect(navigate).toHaveBeenCalledWith('/flights/1');
     })
