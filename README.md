@@ -9,6 +9,7 @@ https://fly-high-priyanshus-projects-8099d868.vercel.app/
 ## Fetch flight information using following APIs
 
 https://flight-status-mock.core.travelopia.cloud/flights
+
 https://flight-status-mock.core.travelopia.cloud/flights/:id
 
 ### Local Set up
@@ -27,5 +28,3 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 #### Run Build
     > npm run build
-
-Your app is ready to be deployed!

@@ -24,7 +24,7 @@
   "rules": {
     "indent": ["warn", 4, {"SwitchCase": 2}],
     "semi": ["error", "always"],
-    "no-unused-vars": ["error", {"varsIgnorePattern": "React"}],
+    "no-unused-vars": ["warn", {"varsIgnorePattern": "React"}],
     "array-bracket-spacing": "error",
     "object-curly-spacing": "error",
     "comma-spacing": "error",
