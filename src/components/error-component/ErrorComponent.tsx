@@ -2,11 +2,11 @@ import {Container, Paper, Typography} from "@mui/material";
 import React, {ComponentType} from "react";
 import "./ErrorComponent.css";
 
-interface Props {
+type Props = {
     title: string;
     description: string;
     ActionComponent?: ComponentType;
-}
+};
 
 const ErrorComponent : React.FC<Props> = ({title, description, ActionComponent}) => {
     return (

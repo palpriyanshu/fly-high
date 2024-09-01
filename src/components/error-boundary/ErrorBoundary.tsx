@@ -9,21 +9,20 @@ interface Props {
     fallback: ReactNode;
 }
 export default class ErrorBoundary extends React.Component<Props, State> {
-    state: State;
     constructor(props: Props) {
         super(props);
         this.state = {hasError: false};
     }
 
-    public static getDerivedStateFromError(): State {
+    static getDerivedStateFromError(): State {
         return {hasError: true};
     }
 
-    public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
+    componentDidCatch(error: Error, errorInfo: ErrorInfo) {
         console.error("ErrorBoundary caught an error:", error, errorInfo);
     }
 
-    public render() {
+    render() {
         if (this.state.hasError) {
             return this.props.fallback;
         }

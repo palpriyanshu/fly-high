@@ -1,7 +1,7 @@
+import React from "react";
 import {useNavigate} from "react-router-dom";
 import {render, screen} from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import React from "react";
 import NavigationButton from "./NavigationButton";
 
 jest.mock("react-router-dom");

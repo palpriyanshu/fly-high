@@ -2,8 +2,13 @@ import React from "react";
 import {render, screen} from "@testing-library/react";
 import FlightDetailCard from "./FlightDetailCard";
 import useFetchFlightDetail from "../../hooks/useFetchFlightDetail";
+import {useNavigate} from "react-router-dom";
 
 jest.mock("../../hooks/useFetchFlightDetail");
+
+jest.mock("react-router-dom");
+
+(useNavigate as jest.Mock).mockReturnValue(jest.fn());
 
 const flightDetail = {
     id : 1,
