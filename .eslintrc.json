@@ -21,10 +21,10 @@
     "react",
     "@typescript-eslint"
   ],
+  "ignorePatterns": ["build/"],
   "rules": {
     "indent": ["warn", 4, {"SwitchCase": 2}],
     "semi": ["error", "always"],
-    "no-unused-vars": ["warn", {"varsIgnorePattern": "React"}],
     "array-bracket-spacing": "error",
     "object-curly-spacing": "error",
     "comma-spacing": "error",
@@ -34,6 +34,7 @@
     "no-multi-spaces": "error",
     "react/jsx-max-depth": ["error", { "max": 5 }],
     "@typescript-eslint/no-unused-vars": "error",
-    "no-console": ["error", { "allow": ["error"] }]
+    "no-console": ["error", { "allow": ["error"] }],
+    "@typescript-eslint/no-explicit-any": "off"
   }
 }
