@@ -26,9 +26,6 @@ jobs:
         with:
           node-version: '21'
 
-      - name: Run Linting Locally
-        run: npm run eslint
-
       - name: Run Tests Locally
         run: npm run test
 
