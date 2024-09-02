@@ -26,5 +26,23 @@ jobs:
         with:
           node-version: '21'
 
+      - name: Run Linting Locally
+        run: npm run eslint
+
       - name: Run Tests Locally
         run: npm run test
+
+      - name: Run Build Locally
+        run: npm run build
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: test
+    env:
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install Vercel CLI
+        run: |
+          npm install --global vercel@latest
+          vercel --prod --token=$VERCEL_TOKEN --confirm
