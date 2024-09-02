@@ -6,12 +6,6 @@ This app shows real-time flight status.
 
 https://fly-high-priyanshus-projects-8099d868.vercel.app/
 
-## Fetch flight information using following APIs
-
-https://flight-status-mock.core.travelopia.cloud/flights
-
-https://flight-status-mock.core.travelopia.cloud/flights/:id
-
 ### Local Set up
 
 #### Installation 

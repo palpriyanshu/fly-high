@@ -17,7 +17,7 @@ const FlightsTable: FC = () => {
     const [currentPage, setPage] = useState(0);
     const [orderBy, setOrderBy] = useState<keyof FlightDetail>("departureTime");
     const [order, setOrder] = useState<"asc" | "desc">("asc");
-    const {data: flightList, loading, error} = useFetchFlightList(5);
+    const {data: flightList, loading, error} = useFetchFlightList();
 
     if (loading) {
         return <Loader />;

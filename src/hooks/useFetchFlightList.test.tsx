@@ -1,25 +1,24 @@
 import {renderHook, waitFor} from "@testing-library/react";
 import useFetchFlightList from "./useFetchFlightList";
+import fetchApi from "../resources/fetch-api";
 
-const flightList = [{
-    id : 1,
-    flightNumber: "SW110",
-    airline: "Southwest",
-    origin: "Las Vegas",
-    destination: "Houston",
-    departureTime: "2024-08-31T19:13:01.685Z",
-    status: "On Time"
-}];
-jest.mock("../resources/fetch-api", () => {
-    return {
-        fetchFlightList: () => Promise.resolve(flightList),
-        fetchFlightDetail: jest.fn()
-    };
-});
+jest.mock("../resources/fetch-api");
+
 describe("useFetchFlightList", () => {
     test("should return data when fetch api passes", async () => {
-        const refreshIntervalInSec = 10;
-        const {result} = renderHook(() => useFetchFlightList(refreshIntervalInSec)) ;
+        const flightList = [{
+            id : 1,
+            flightNumber: "SW110",
+            airline: "Southwest",
+            origin: "Las Vegas",
+            destination: "Houston",
+            departureTime: "2024-08-31T19:13:01.685Z",
+            status: "On Time"
+        }];
+
+        (fetchApi.fetchFlightList as jest.Mock).mockReturnValue(Promise.resolve(flightList));
+
+        const {result} = renderHook(() => useFetchFlightList()) ;
 
         expect(result.current.data).toEqual([]);
         await waitFor(() => {
@@ -28,12 +27,22 @@ describe("useFetchFlightList", () => {
     });
 
     test("should return loading till api is not responding", async () => {
-        const refreshIntervalInSec = 10;
-        const {result} = renderHook(() => useFetchFlightList(refreshIntervalInSec)) ;
+        (fetchApi.fetchFlightList as jest.Mock).mockReturnValue(Promise.resolve());
+        const {result} = renderHook(() => useFetchFlightList()) ;
 
         expect(result.current.loading).toBe(true);
         await waitFor(() => {
             expect(result.current.loading).toBe(false);
+        });
+    });
+
+    test("should return error when api fails", async () => {
+        (fetchApi.fetchFlightList as jest.Mock).mockReturnValue(Promise.reject({errorMessage: "some error"}));
+        const {result} = renderHook(() => useFetchFlightList()) ;
+
+        expect(result.current.error).toBeNull();
+        await waitFor(() => {
+            expect(result.current.error?.errorMessage).toBe("some error");
         });
     });
 });

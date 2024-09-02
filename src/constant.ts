@@ -1,0 +1,1 @@
+export const FLIGHTS_LIST_REFRESH_TIME_IN_MS = 5000;

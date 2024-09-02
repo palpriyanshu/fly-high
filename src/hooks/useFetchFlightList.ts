@@ -1,12 +1,13 @@
 import {useEffect, useState} from "react";
 import fetchApis, {ErrorResponse} from "../resources/fetch-api";
 import {FlightDetail} from "../types/flight-details";
+import {FLIGHTS_LIST_REFRESH_TIME_IN_MS} from "../constant";
 
-export default function useFetchFlightList(refreshIntervalInSec: number): {
+export default function useFetchFlightList(): {
     data: FlightDetail[];
     loading: boolean;
     error: ErrorResponse | null;
-} {
+    } {
     const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<ErrorResponse | null>(null);
     const [flightList, setFlightList] = useState<FlightDetail[]>([]);
@@ -29,12 +30,12 @@ export default function useFetchFlightList(refreshIntervalInSec: number): {
             } catch (reason) {
                 setFlightList((prev) => prev);
             }
-        }, refreshIntervalInSec * 1000);
+        }, FLIGHTS_LIST_REFRESH_TIME_IN_MS);
 
         return () => {
             clearInterval(intervalId);
         };
-    }, [refreshIntervalInSec]);
+    }, [FLIGHTS_LIST_REFRESH_TIME_IN_MS]);
 
     return {data: flightList, loading, error};
 }

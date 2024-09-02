@@ -4,24 +4,22 @@ import ErrorBoundary from "../../components/error-boundary/ErrorBoundary";
 import ErrorComponent from "../../components/error-component/ErrorComponent";
 import {useParams} from "react-router-dom";
 import NavigationButton from "../../components/button/NavigationButton";
+import locale from "../../locale/en.json";
 
 const FlightDetail: React.FC = () => {
     const {id} = useParams<{id: string}>();
 
-    const title = "Oops... Something went wrong!";
-    const description = "Unable to retrieve flight information at the moment. Please retry after some time or return to homepage.";
-
     if (!id) {
         return (
             <ErrorComponent
-                title={title}
-                description={description}
-                ActionComponent={() => <NavigationButton path="/" label="Back to Home"/>}
+                title={locale.API_ERROR_MESSAGE_TITLE}
+                description={locale.FLIGHT_DETAIL_FETCH_ERROR}
+                ActionComponent={() => <NavigationButton path="/" label={locale.BACK_TO_HOME}/>}
             />
         );
     }
 
-    return <ErrorBoundary fallback={<ErrorComponent title={title} description={description} ActionComponent={() => <NavigationButton path="/" label="Back to Home"/>}/>} >
+    return <ErrorBoundary fallback={<ErrorComponent title={locale.API_ERROR_MESSAGE_TITLE} description={locale.FLIGHT_DETAIL_FETCH_ERROR} ActionComponent={() => <NavigationButton path="/" label={locale.BACK_TO_HOME}/>}/>} >
         <FlightDetailCard flightId={id}/>
     </ErrorBoundary>;
 };

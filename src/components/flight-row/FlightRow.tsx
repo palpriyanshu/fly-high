@@ -13,7 +13,7 @@ type Props = {
 const FlightRow: React.FC<Props> = ({flightDetail}) => {
     const navigate = useNavigate();
 
-    return <TableRow onClick={() => navigate(`/flights/${flightDetail.id}`)} data-testid={`flight-row-${flightDetail.id}`}>
+    return <TableRow onClick={() => navigate(`/flight-details/${flightDetail.id}`)} data-testid={`flight-row-${flightDetail.id}`}>
         <TableCell sx={{fontWeight: "bold"}}>{flightDetail.flightNumber}</TableCell>
         <TableCell>{flightDetail.airline}</TableCell>
         <TableCell>{flightDetail.origin}</TableCell>

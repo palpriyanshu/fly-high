@@ -1,21 +1,20 @@
 import React from "react";
 import "./App.css";
 import Header from "./components/header/Header";
-import {Route, BrowserRouter as Router, Routes} from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 import Dashboard from "./pages/dashboard/Dashboard";
 import FlightDetail from "./pages/flight-detail/FlightDetail";
+import PageNotFound from "./pages/page-not-found/PageNotFound";
 
 function App() {
     return (
         <div className="app">
             <Header/>
-            <Router>
-                <Routes>
-                    <Route path="/" element={<Dashboard />}/>
-                    <Route path="/flights" element={<Dashboard />}/>
-                    <Route path="/flights/:id" element={<FlightDetail />} />
-                </Routes>
-            </Router>
+            <Routes>
+                <Route path="/" element={<Dashboard />}/>
+                <Route path="/flight-details/:id" element={<FlightDetail />} />
+                <Route path="/*" element={<PageNotFound />} />
+            </Routes>
         </div>
     );
 }

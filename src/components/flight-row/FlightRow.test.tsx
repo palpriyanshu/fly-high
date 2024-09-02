@@ -76,7 +76,7 @@ describe("FlightRow", () => {
         userEvent.click(flightNumber);
 
         await waitFor(() => {
-            expect(navigate).toHaveBeenCalledWith("/flights/1");
+            expect(navigate).toHaveBeenCalledWith("/flight-details/1");
         });
     });
 });

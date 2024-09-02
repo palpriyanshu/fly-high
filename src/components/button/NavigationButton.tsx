@@ -8,7 +8,7 @@ type Props = {
 };
 const NavigationButton: React.FC<Props> = ({path, label}) => {
     const navigate = useNavigate();
-    return <Button variant={"contained"} sx={{background: "#319795"}} onClick={() => navigate(path)}>{label}</Button>;
+    return <Button variant={"contained"} sx={{background: "#1976d2", fontWeight: "bold"}} onClick={() => navigate(path)}>{label}</Button>;
 };
 
 export default NavigationButton;

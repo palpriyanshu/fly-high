@@ -1,0 +1,9 @@
+{
+  "BACK_TO_HOME": "Back to Home",
+  "API_ERROR_MESSAGE_TITLE": "Oops... Something went wrong!",
+  "FLIGHT_DETAIL_FETCH_ERROR": "Unable to retrieve flight information at the moment. Please retry after some time or return to homepage.",
+  "FLIGHT_LIST_FETCH_ERROR": "Unable to retrieve flights information at the moment. Please retry after some time.",
+  "PAGE_NOT_FOUND_TITLE": "404",
+  "PAGE_NOT_FOUND_DESCRIPTION": "This page is not available. Please check the url again or visit to home page.",
+  "HOME_PAGE_BUTTON": "Home Page"
+}
